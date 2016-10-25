@@ -11,3 +11,4 @@ library dogma_source_metadata_test.test;
 //---------------------------------------------------------------------
 
 export 'src/abstract_metadata.dart';
+export 'src/constant_metadata.dart';
