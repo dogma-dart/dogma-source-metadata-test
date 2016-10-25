@@ -19,7 +19,7 @@ import 'matcher.dart';
 
 final Metadata _abstractMetadata = new ClassMetadata('A', isAbstract: true);
 final Metadata _concreteMetadata = new ClassMetadata('C', isAbstract: false);
-final Metadata _notAbstractMetadata = new ParameterMetadata('param');
+final Metadata _notAbstractMetadataType = new ParameterMetadata('param');
 
 void main() {
   test('isAbstractMetadata', () {
@@ -27,20 +27,20 @@ void main() {
 
     expectMatch(matcher, _abstractMetadata);
     expectMatch(matcher, _concreteMetadata);
-    expectNoMatch(matcher, _notAbstractMetadata);
+    expectNoMatch(matcher, _notAbstractMetadataType);
   });
   test('isAbstract', () {
     final matcher = isAbstract;
 
     expectMatch(matcher, _abstractMetadata);
     expectNoMatch(matcher, _concreteMetadata);
-    expectNoMatch(matcher, _notAbstractMetadata);
+    expectNoMatch(matcher, _notAbstractMetadataType);
   });
   test('isConcrete', () {
     final matcher = isConcrete;
 
     expectNoMatch(matcher, _abstractMetadata);
     expectMatch(matcher, _concreteMetadata);
-    expectMatch(matcher, _notAbstractMetadata);
+    expectMatch(matcher, _notAbstractMetadataType);
   });
 }
