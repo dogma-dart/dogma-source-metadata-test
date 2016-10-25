@@ -12,6 +12,7 @@
 import 'package:test/test.dart';
 
 import 'src/abstract_metadata_test.dart' as abstract_metadata_test;
+import 'src/constant_metadata_test.dart' as constant_metadata_test;
 
 //---------------------------------------------------------------------
 // Library contents
@@ -21,4 +22,5 @@ import 'src/abstract_metadata_test.dart' as abstract_metadata_test;
 void main() {
   // Run tests
   group('AbstractMetadata tests', abstract_metadata_test.main);
+  group('ConstantMetadata tests', constant_metadata_test.main);
 }
