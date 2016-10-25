@@ -7,6 +7,7 @@ pipeline:
     environment:
       - DARTANALYZER_FLAGS=--fatal-warnings
   coverage:
+    image: plugins/coverage
     when:
       matrix:
         DART_VERSION: dev
