@@ -14,6 +14,7 @@ import 'package:test/test.dart';
 import 'src/abstract_metadata_test.dart' as abstract_metadata_test;
 import 'src/constant_metadata_test.dart' as constant_metadata_test;
 import 'src/privacy_metadata_test.dart' as privacy_metadata_test;
+import 'src/static_metadata_test.dart' as static_metadata_test;
 
 //---------------------------------------------------------------------
 // Library contents
@@ -25,4 +26,5 @@ void main() {
   group('AbstractMetadata tests', abstract_metadata_test.main);
   group('ConstantMetadata tests', constant_metadata_test.main);
   group('PrivacyMetadata tests', privacy_metadata_test.main);
+  group('StaticMetadata tests', static_metadata_test.main);
 }
