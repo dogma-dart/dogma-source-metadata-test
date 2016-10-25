@@ -8,7 +8,7 @@ pipeline:
       - DARTANALYZER_FLAGS=--fatal-warnings
   coverage:
     image: plugins/coverage
-    server: http://aircover.co
+    server: https://aircover.co/
     pattern: lcov.info
     when:
       matrix:
