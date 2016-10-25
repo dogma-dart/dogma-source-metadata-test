@@ -12,7 +12,9 @@ library dogma_source_metadata_test.test;
 
 export 'src/abstract_metadata.dart';
 export 'src/constant_metadata.dart';
+export 'src/metadata.dart';
 export 'src/parameter_metadata.dart';
+export 'src/parameter_metadata_matcher.dart';
 export 'src/privacy_metadata.dart';
 export 'src/static_metadata.dart';
 export 'src/typed_metadata.dart';
