@@ -18,35 +18,15 @@ import 'package:test/test.dart';
 const Matcher isAbstractMetadata = const isInstanceOf<AbstractMetadata>();
 
 /// A matcher for abstract metadata.
-const _IsAbstract isAbstract = const _IsAbstract();
+final Matcher isAbstract = predicate((value) {
+  if (value is! AbstractMetadata) return false;
+
+  return (value as AbstractMetadata).isAbstract;
+}, 'metadata is abstract');
 
 /// A matcher for concrete metadata.
-const _IsConcrete isConcrete = const _IsConcrete();
+final Matcher isConcrete = predicate((value) {
+  if (value is! AbstractMetadata) return true;
 
-class _IsAbstract extends Matcher {
-  const _IsAbstract();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! AbstractMetadata) return false;
-
-    return (item as AbstractMetadata).isAbstract;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is abstract');
-}
-
-class _IsConcrete extends Matcher {
-  const _IsConcrete();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! AbstractMetadata) return true;
-
-    return !(item as AbstractMetadata).isAbstract;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is concrete');
-}
+  return !(value as AbstractMetadata).isAbstract;
+}, 'metadata is concrete');

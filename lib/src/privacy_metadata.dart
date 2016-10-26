@@ -18,35 +18,15 @@ import 'package:test/test.dart';
 const Matcher isPrivacyMetadata = const isInstanceOf<PrivacyMetadata>();
 
 /// A matcher for private metadata.
-const _IsPrivate isPrivate = const _IsPrivate();
+final Matcher isPrivate = predicate((value) {
+  if (value is! PrivacyMetadata) return false;
+
+  return (value as PrivacyMetadata).isPrivate;
+}, 'metadata is private');
 
 /// A matcher for public metadata.
-const _IsPublic isPublic = const _IsPublic();
+final Matcher isPublic = predicate((value) {
+  if (value is! PrivacyMetadata) return true;
 
-class _IsPrivate extends Matcher {
-  const _IsPrivate();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! PrivacyMetadata) return false;
-
-    return (item as PrivacyMetadata).isPrivate;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is private');
-}
-
-class _IsPublic extends Matcher {
-  const _IsPublic();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! PrivacyMetadata) return true;
-
-    return (item as PrivacyMetadata).isPublic;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is public');
-}
+  return (value as PrivacyMetadata).isPublic;
+}, 'metadata is public');

@@ -18,35 +18,15 @@ import 'package:test/test.dart';
 const Matcher isConstantMetadata = const isInstanceOf<ConstantMetadata>();
 
 /// A matcher for constant metadata.
-const _IsConstant isConstant = const _IsConstant();
+final Matcher isConstant = predicate((value) {
+  if (value is! ConstantMetadata) return false;
+
+  return (value as ConstantMetadata).isConst;
+}, 'metadata is constant');
 
 /// A matcher for concrete metadata.
-const _IsNotConstant isNotConstant = const _IsNotConstant();
+final Matcher isNotConstant = predicate((value) {
+  if (value is! ConstantMetadata) return true;
 
-class _IsConstant extends Matcher {
-  const _IsConstant();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! ConstantMetadata) return false;
-
-    return (item as ConstantMetadata).isConst;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is constant');
-}
-
-class _IsNotConstant extends Matcher {
-  const _IsNotConstant();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! ConstantMetadata) return true;
-
-    return !(item as ConstantMetadata).isConst;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is not constant');
-}
+  return !(value as ConstantMetadata).isConst;
+}, 'metadata is not constant');

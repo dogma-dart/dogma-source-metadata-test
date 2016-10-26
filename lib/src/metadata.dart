@@ -31,20 +31,9 @@ Matcher metadataEqual(Metadata expected) {
 }
 
 /// Returns a matcher that checks the [name] on metadata.
-Matcher isNamed(String name) => new _IsNamed(name);
+Matcher isNamed(String expected) =>
+    predicate((value) {
+      if (value is! Metadata) return false;
 
-class _IsNamed extends Matcher {
-  final expected;
-
-  const _IsNamed(this.expected);
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! Metadata) return false;
-
-    return (item as Metadata).name == expected;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is named $expected');
-}
+      return (value as Metadata).name == expected;
+    }, 'metadata is named $expected');

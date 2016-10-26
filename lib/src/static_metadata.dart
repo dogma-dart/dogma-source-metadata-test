@@ -18,35 +18,15 @@ import 'package:test/test.dart';
 const Matcher isStaticMetadata = const isInstanceOf<StaticMetadata>();
 
 /// A matcher for static metadata.
-const _IsStatic isStatic = const _IsStatic();
+final Matcher isStatic = predicate((value) {
+  if (value is! StaticMetadata) return false;
+
+  return (value as StaticMetadata).isStatic;
+}, 'metadata is static');
 
 /// A matcher for concrete metadata.
-const _IsNotStatic isNotStatic = const _IsNotStatic();
+final Matcher isNotStatic = predicate((value) {
+  if (value is! StaticMetadata) return true;
 
-class _IsStatic extends Matcher {
-  const _IsStatic();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! StaticMetadata) return false;
-
-    return (item as StaticMetadata).isStatic;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is static');
-}
-
-class _IsNotStatic extends Matcher {
-  const _IsNotStatic();
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! StaticMetadata) return true;
-
-    return !(item as StaticMetadata).isStatic;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata is not static');
-}
+  return !(value as StaticMetadata).isStatic;
+}, 'metadata is not static');

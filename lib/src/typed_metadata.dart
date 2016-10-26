@@ -18,23 +18,12 @@ import 'package:test/test.dart';
 const Matcher isTypedMetadata = const isInstanceOf<TypedMetadata>();
 
 /// A matcher for dynamic typed metadata.
-final _IsType isDynamicType = new _IsType(dynamicType);
+final Matcher isDynamicType = isType(dynamicType);
 
 /// Matches the [type] on [TypedMetadata].
-Matcher isType(TypeMetadata type) => new _IsType(type);
+Matcher isType(TypeMetadata expected) =>
+    predicate((value) {
+      if (value is! TypedMetadata) return false;
 
-class _IsType extends Matcher {
-  final TypeMetadata type;
-
-  _IsType(this.type);
-
-  @override
-  bool matches(dynamic item, Map matchState) {
-    if (item is! TypedMetadata) return false;
-
-    return (item as TypedMetadata).type == type;
-  }
-
-  @override
-  Description describe(Description description) => description.add('metadata type equal');
-}
+      return (value as TypedMetadata).type == expected;
+    }, 'metadata type is equal to $expected');
