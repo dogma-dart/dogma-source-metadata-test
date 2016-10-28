@@ -17,3 +17,9 @@ import 'annotated.dart';
 
 /// Matcher for checking if metadata is overridden.
 final Matcher isOverridden = annotatedWith(override, 'metadata is overridden');
+
+/// Matcher for checking if metadata is not overridden.
+final Matcher isNotOverridden = notAnnotatedWith(
+    override,
+    'metadata is not overridden'
+);

@@ -18,3 +18,9 @@ import 'annotated.dart';
 
 /// Matcher for checking if metadata is protected.
 final Matcher isProtected = annotatedWith(protected, 'metadata is protected');
+
+/// Matcher for checking if metadata is not protected.
+final Matcher isNotProtected = notAnnotatedWith(
+    protected,
+    'metadata is not protected'
+);

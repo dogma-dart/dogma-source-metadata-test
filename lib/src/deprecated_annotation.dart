@@ -20,3 +20,9 @@ final Matcher isDeprecated = annotatedWith(
     deprecated,
     'metadata is deprecated'
 );
+
+/// Matcher for checking if metadata is not deprecated.
+final Matcher isNotDeprecated = notAnnotatedWith(
+    deprecated,
+    'metadata is not deprecated'
+);
