@@ -37,7 +37,6 @@ void main() {
     final matchState = {};
     matcher.matches(actual, matchState);
 
-    print(matchState);
     expect(matchState, hasLength(5));
   });
 }
