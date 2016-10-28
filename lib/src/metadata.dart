@@ -10,7 +10,9 @@
 import 'package:test/test.dart';
 import 'package:dogma_source_analyzer/metadata.dart';
 
+import 'constructor_metadata_matcher.dart';
 import 'function_metadata_matcher.dart';
+import 'method_metadata_matcher.dart';
 import 'parameter_metadata_matcher.dart';
 
 //---------------------------------------------------------------------
@@ -23,14 +25,20 @@ import 'parameter_metadata_matcher.dart';
 Matcher metadataEqual(Metadata expected) {
   var matcher;
 
-  if (expected is ParameterMetadata) {
+  if (expected is ConstructorMetadata) {
+    matcher = new ConstructorMetadataMatcher(expected);
+  } else if (expected is MethodMetadata) {
+    matcher = new MethodMetadataMatcher(expected);
+  } else if (expected is FunctionMetadata) {
+    matcher = new FunctionMetadataMatcher(expected);
+  } else if (expected is ParameterMetadata) {
     matcher = new ParameterMetadataMatcher(expected);
   }
 
   return matcher;
 }
 
-/// Returns a matcher that checks the [name] on metadata.
+/// Returns a matcher that checks the [expected] name on metadata.
 Matcher isNamed(String expected) =>
     predicate((value) {
       if (value is! Metadata) return false;
