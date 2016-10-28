@@ -13,9 +13,12 @@ import 'package:test/test.dart';
 
 import 'src/abstract_metadata_test.dart' as abstract_metadata_test;
 import 'src/constant_metadata_test.dart' as constant_metadata_test;
+import 'src/deprecated_annotation_test.dart' as deprecated_annotation_test;
+import 'src/override_annotation_test.dart' as override_annotation_test;
 import 'src/parameter_metadata_matcher_test.dart' as parameter_metadata_matcher_test;
 import 'src/parameter_metadata_test.dart' as parameter_metadata_test;
 import 'src/privacy_metadata_test.dart' as privacy_metadata_test;
+import 'src/protected_annotation_test.dart' as protected_annotation_test;
 import 'src/static_metadata_test.dart' as static_metadata_test;
 import 'src/typed_metadata_test.dart' as typed_metadata_test;
 
@@ -32,6 +35,11 @@ void main() {
   group('PrivacyMetadata tests', privacy_metadata_test.main);
   group('StaticMetadata tests', static_metadata_test.main);
   group('TypedMetadata tests', typed_metadata_test.main);
+
+  //group('Annotated tests', annotated_test.main);
+  group('@deprecated annotation tests', deprecated_annotation_test.main);
+  group('@override annotation tests', override_annotation_test.main);
+  group('@protected annotation tests', protected_annotation_test.main);
 
   group('ParameterMetadataMatcher tests', parameter_metadata_matcher_test.main);
 }
