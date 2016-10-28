@@ -20,7 +20,7 @@ const Matcher isTypedMetadata = const isInstanceOf<TypedMetadata>();
 /// A matcher for dynamic typed metadata.
 final Matcher isDynamicType = isType(dynamicType);
 
-/// Matches the [type] on [TypedMetadata].
+/// Matches the [expected] type on [TypedMetadata].
 Matcher isType(TypeMetadata expected) =>
     predicate((value) {
       if (value is! TypedMetadata) return false;
