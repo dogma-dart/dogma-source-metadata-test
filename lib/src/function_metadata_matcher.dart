@@ -9,7 +9,7 @@
 
 import 'package:dogma_source_analyzer/metadata.dart';
 
-import 'package:dogma_source_metadata_test/src/metadata_matcher.dart';
+import 'metadata_matcher.dart';
 
 //---------------------------------------------------------------------
 // Library contents
@@ -35,7 +35,7 @@ class FunctionMetadataMatcher<T extends FunctionMetadata> extends MetadataMatche
     var matched = super.matches(item, matchState);
     final actual = item as FunctionMetadata;
 
-    matched = checkField(matchState, 'type', actual.returnType, expected.returnType) && matched;
+    matched = checkField(matchState, 'returnType', actual.returnType, expected.returnType) && matched;
     matched = checkField(matchState, 'isPrivate', actual.isPrivate, expected.isPrivate) && matched;
 
     return matched;

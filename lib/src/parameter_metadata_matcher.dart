@@ -9,7 +9,7 @@
 
 import 'package:dogma_source_analyzer/metadata.dart';
 
-import 'package:dogma_source_metadata_test/src/metadata_matcher.dart';
+import 'metadata_matcher.dart';
 
 //---------------------------------------------------------------------
 // Library contents
