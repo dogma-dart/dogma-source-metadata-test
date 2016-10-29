@@ -11,6 +11,7 @@ import 'package:test/test.dart';
 import 'package:dogma_source_analyzer/metadata.dart';
 
 import 'constructor_metadata_matcher.dart';
+import 'field_metadata_matcher.dart';
 import 'function_metadata_matcher.dart';
 import 'method_metadata_matcher.dart';
 import 'parameter_metadata_matcher.dart';
@@ -33,6 +34,8 @@ Matcher metadataEqual(Metadata expected) {
     matcher = new FunctionMetadataMatcher(expected);
   } else if (expected is ParameterMetadata) {
     matcher = new ParameterMetadataMatcher(expected);
+  } else if (expected is FieldMetadata) {
+    matcher = new FieldMetadataMatcher(expected);
   }
 
   return matcher;
