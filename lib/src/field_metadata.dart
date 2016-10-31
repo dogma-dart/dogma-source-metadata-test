@@ -68,12 +68,16 @@ final Matcher noSetter = predicate((value) {
 final Matcher isFinal = predicate((value) {
   if (value is! FieldMetadata) return false;
 
-  return !(value as FieldMetadata).setter;
+  final field = value as FieldMetadata;
+
+  // Final field is not a property and contains no setter
+  return !field.isProperty && !field.setter;
 }, 'field is final');
 
 /// A matcher for [FieldMetadata] that is not final.
 final Matcher isNotFinal = predicate((value) {
   if (value is! FieldMetadata) return false;
 
+  // A final field does not have a setter
   return (value as FieldMetadata).setter;
 }, 'field is not final');
