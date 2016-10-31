@@ -24,7 +24,13 @@ void main() {
     expect(actual, metadataEqual(expected));
   });
   test('adding differences', () {
-    final actual = new ParameterMetadata('foo');
+    final actual = new ParameterMetadata(
+        'foo',
+        type: new TypeMetadata.int(),
+        parameterKind: ParameterKind.named,
+        isInitializer: false,
+        defaultValue: null
+    );
     final expected = new ParameterMetadata(
         'bar',
         type: new TypeMetadata.bool(),
@@ -38,5 +44,12 @@ void main() {
     matcher.matches(actual, matchState);
 
     expect(matchState, hasLength(5));
+
+    // Expect field names
+    expect(matchState, contains('name'));
+    expect(matchState, contains('type'));
+    expect(matchState, contains('parameterKind'));
+    expect(matchState, contains('isInitializer'));
+    expect(matchState, contains('defaultValue'));
   });
 }
