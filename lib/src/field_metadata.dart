@@ -75,5 +75,5 @@ final Matcher isFinal = predicate((value) {
 final Matcher isNotFinal = predicate((value) {
   if (value is! FieldMetadata) return false;
 
-  return !(value as FieldMetadata).setter;
+  return (value as FieldMetadata).setter;
 }, 'field is not final');
