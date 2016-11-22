@@ -18,69 +18,55 @@ import 'package:dogma_source_metadata_test/test.dart';
 
 void main() {
   test('equality', () {
-    final actual = new MethodMetadata(
-        'foo',
+    final actual = new ConstructorMetadata(
+        interfaceType('Foo'),
         parameters: <ParameterMetadata>[
           new ParameterMetadata('a'),
           new ParameterMetadata('b'),
-        ],
-        typeParameters: <TypeMetadata>[
-          dynamicType
         ]
     );
-    final expected = new MethodMetadata(
-        'foo',
+    final expected = new ConstructorMetadata(
+        interfaceType('Foo'),
         parameters: <ParameterMetadata>[
           new ParameterMetadata('a'),
           new ParameterMetadata('b'),
-        ],
-        typeParameters: <TypeMetadata>[
-          dynamicType
         ]
     );
 
     expect(actual, metadataEqual(expected));
   });
   test('adding differences', () {
-    final actual = new MethodMetadata(
-        'foo',
-        returnType: intType,
+    final actual = new ConstructorMetadata(
+        interfaceType('Foo'),
+        name: 'foo',
         parameters: <ParameterMetadata>[
           new ParameterMetadata('a'),
           new ParameterMetadata('b')
         ],
-        typeParameters: <TypeMetadata>[
-          dynamicType
-        ],
-        isAbstract: true,
-        isStatic: false
+        isConst: true,
+        isFactory: false
     );
-    final expected = new MethodMetadata(
-        'bar',
-        returnType: boolType,
+    final expected = new ConstructorMetadata(
+        interfaceType('Bar'),
+        name: 'bar',
         parameters: <ParameterMetadata>[
           new ParameterMetadata('c')
         ],
-        typeParameters: <TypeMetadata>[
-          intType,
-          dynamicType
-        ],
-        isAbstract: false,
-        isStatic: true
+        isConst: false,
+        isFactory: true
     );
 
     final matcher = metadataEqual(expected);
     final matchState = {};
     matcher.matches(actual, matchState);
 
-    expect(matchState, hasLength(6));
+    expect(matchState, hasLength(5));
 
     // Expect field names
     expect(matchState, contains('name'));
     expect(matchState, contains('returnType'));
     expect(matchState, contains('parameters'));
-    expect(matchState, contains('typeParameters'));
-    expect(matchState, contains('isAbstract'));
-    expect(matchState, contains('isStatic'));
+    expect(matchState, contains('isConst'));
+    expect(matchState, contains('isFactory'));
   });
 }

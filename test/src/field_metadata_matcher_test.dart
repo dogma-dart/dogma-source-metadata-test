@@ -18,57 +18,53 @@ import 'package:dogma_source_metadata_test/test.dart';
 
 void main() {
   test('equality', () {
-    final actual = new ConstructorMetadata(
-        interfaceType('Foo'),
-        parameters: <ParameterMetadata>[
-          new ParameterMetadata('a'),
-          new ParameterMetadata('b'),
-        ]
-    );
-    final expected = new ConstructorMetadata(
-        interfaceType('Foo'),
-        parameters: <ParameterMetadata>[
-          new ParameterMetadata('a'),
-          new ParameterMetadata('b'),
-        ]
-    );
+    final actual = new FieldMetadata('foo');
+    final expected = new FieldMetadata('foo');
 
     expect(actual, metadataEqual(expected));
   });
   test('adding differences', () {
-    final actual = new ConstructorMetadata(
-        interfaceType('Foo'),
-        name: 'foo',
-        parameters: <ParameterMetadata>[
-          new ParameterMetadata('a'),
-          new ParameterMetadata('b')
-        ],
+    final actual = new FieldMetadata(
+        'foo',
+        type: intType,
+        isProperty: true,
+        getter: true,
+        setter: true,
+        isAbstract: true,
         isConst: true,
-        isFactory: false
+        isFinal: true,
+        isStatic: true,
+        defaultValue: null
     );
-    final expected = new ConstructorMetadata(
-        interfaceType('Bar'),
-        name: 'bar',
-        parameters: <ParameterMetadata>[
-          new ParameterMetadata('c')
-        ],
+    final expected = new FieldMetadata(
+        'bar',
+        type: boolType,
+        isProperty: false,
+        getter: false,
+        setter: false,
+        isAbstract: false,
         isConst: false,
-        isFactory: true
+        isFinal: false,
+        isStatic: false,
+        defaultValue: false
     );
 
     final matcher = metadataEqual(expected);
     final matchState = {};
     matcher.matches(actual, matchState);
 
-    expect(matchState, hasLength(5));
+    expect(matchState, hasLength(10));
 
     // Expect field names
     expect(matchState, contains('name'));
-    expect(matchState, contains('returnType'));
-    expect(matchState, contains('parameters'));
+    expect(matchState, contains('type'));
+    expect(matchState, contains('isProperty'));
+    expect(matchState, contains('getter'));
+    expect(matchState, contains('setter'));
     expect(matchState, contains('isAbstract'));
+    expect(matchState, contains('isConst'));
+    expect(matchState, contains('isFinal'));
     expect(matchState, contains('isStatic'));
-
-    print(matchState);
+    expect(matchState, contains('defaultValue'));
   });
 }
