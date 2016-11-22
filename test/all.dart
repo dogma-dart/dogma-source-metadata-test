@@ -29,6 +29,7 @@ import 'src/protected_annotation_test.dart' as protected_annotation_test;
 import 'src/static_metadata_test.dart' as static_metadata_test;
 import 'src/typed_metadata_test.dart' as typed_metadata_test;
 import 'src/typedef_metadata_matcher_test.dart' as typedef_metadata_matcher_test;
+import 'src/typedef_metadata_test.dart' as typedef_metadata_test;
 
 //---------------------------------------------------------------------
 // Library contents
@@ -44,6 +45,7 @@ void main() {
   group('PrivacyMetadata tests', privacy_metadata_test.main);
   group('StaticMetadata tests', static_metadata_test.main);
   group('TypedMetadata tests', typed_metadata_test.main);
+  group('TypedefMetadata tests', typedef_metadata_test.main);
 
   group('Annotated tests', annotated_test.main);
   group('@deprecated annotation tests', deprecated_annotation_test.main);

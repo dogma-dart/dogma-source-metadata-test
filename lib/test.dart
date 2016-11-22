@@ -178,4 +178,5 @@ export 'src/privacy_metadata.dart';
 export 'src/protected_metadata.dart';
 export 'src/static_metadata.dart';
 export 'src/typed_metadata.dart';
+export 'src/typedef_metadata.dart';
 export 'src/uri_referenced_metadata.dart';
