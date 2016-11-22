@@ -1,4 +1,5 @@
 pipeline:
+  # Build
   build:
     image: google/dart:${DART_VERSION}
     pull: true
@@ -6,14 +7,17 @@ pipeline:
       - sh build.sh
     environment:
       - DARTANALYZER_FLAGS=--fatal-warnings
-#  coverage:
-#    image: plugins/coverage
-#    server: https://aircover.co
-#    pattern: lcov.info
-#    when:
-#      matrix:
-#        DART_VERSION: dev
 
+  # Code coverage
+  coverage:
+    image: plugins/coverage
+    server: https://aircover.co
+    pattern: lcov.info
+    when:
+      matrix:
+        DART_VERSION: dev
+
+# Matrix
 matrix:
   DART_VERSION:
     - latest
