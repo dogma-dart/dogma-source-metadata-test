@@ -36,7 +36,8 @@ class FunctionMetadataMatcher<T extends FunctionMetadata> extends MetadataMatche
     final actual = item as FunctionMetadata;
 
     matched = checkField(matchState, 'returnType', actual.returnType, expected.returnType) && matched;
-    matched = checkField(matchState, 'isPrivate', actual.isPrivate, expected.isPrivate) && matched;
+    matched = checkOrderedList(matchState, 'parameters', actual.parameters, expected.parameters) && matched;
+    matched = checkOrderedList(matchState, 'typeParameters', actual.typeParameters, expected.typeParameters) && matched;
 
     return matched;
   }
