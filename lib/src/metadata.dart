@@ -11,10 +11,13 @@ import 'package:test/test.dart';
 import 'package:dogma_source_analyzer/metadata.dart';
 
 import 'constructor_metadata_matcher.dart';
+import 'class_metadata_matcher.dart';
 import 'field_metadata_matcher.dart';
 import 'function_metadata_matcher.dart';
+import 'library_metadata_matcher.dart';
 import 'method_metadata_matcher.dart';
 import 'parameter_metadata_matcher.dart';
+import 'typedef_metadata_matcher.dart';
 
 //---------------------------------------------------------------------
 // Library contents
@@ -30,12 +33,18 @@ Matcher metadataEqual(Metadata expected) {
     matcher = new ConstructorMetadataMatcher(expected);
   } else if (expected is MethodMetadata) {
     matcher = new MethodMetadataMatcher(expected);
+  } else if (expected is TypedefMetadata) {
+    matcher = new TypedefMetadataMatcher(expected);
   } else if (expected is FunctionMetadata) {
     matcher = new FunctionMetadataMatcher(expected);
   } else if (expected is ParameterMetadata) {
     matcher = new ParameterMetadataMatcher(expected);
   } else if (expected is FieldMetadata) {
     matcher = new FieldMetadataMatcher(expected);
+  } else if (expected is ClassMetadata) {
+    matcher = new ClassMetadataMatcher(expected);
+  } else if (expected is LibraryMetadata) {
+    matcher = new LibraryMetadataMatcher(expected);
   }
 
   return matcher;
