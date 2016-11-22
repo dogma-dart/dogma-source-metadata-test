@@ -14,6 +14,7 @@ import 'package:test/test.dart';
 import 'src/abstract_metadata_test.dart' as abstract_metadata_test;
 import 'src/annotated_test.dart' as annotated_test;
 import 'src/class_metadata_matcher_test.dart' as class_metadata_matcher_test;
+import 'src/commented_test.dart' as commented_test;
 import 'src/constant_metadata_test.dart' as constant_metadata_test;
 import 'src/constructor_metadata_matcher_test.dart' as constructor_metadata_matcher_test;
 import 'src/deprecated_annotation_test.dart' as deprecated_annotation_test;
@@ -37,6 +38,7 @@ import 'src/typedef_metadata_matcher_test.dart' as typedef_metadata_matcher_test
 void main() {
   // Run tests
   group('AbstractMetadata tests', abstract_metadata_test.main);
+  group('Commented tests', commented_test.main);
   group('ConstantMetadata tests', constant_metadata_test.main);
   group('ParameterMetadata tests', parameter_metadata_test.main);
   group('PrivacyMetadata tests', privacy_metadata_test.main);
