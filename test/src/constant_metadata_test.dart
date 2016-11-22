@@ -17,8 +17,8 @@ import 'matcher.dart';
 // Library contents
 //---------------------------------------------------------------------
 
-final Metadata _constantMetadata = new ConstructorMetadata(new TypeMetadata('Foo'), isConst: true);
-final Metadata _notConstantMetadata = new ConstructorMetadata(new TypeMetadata('Foo'), isConst: false);
+final Metadata _constantMetadata = new ConstructorMetadata(interfaceType('Foo'), isConst: true);
+final Metadata _notConstantMetadata = new ConstructorMetadata(interfaceType('Foo'), isConst: false);
 final Metadata _notConstantMetadataType = new ParameterMetadata('param');
 
 void main() {

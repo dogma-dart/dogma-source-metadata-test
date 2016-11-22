@@ -26,14 +26,14 @@ void main() {
   test('adding differences', () {
     final actual = new ParameterMetadata(
         'foo',
-        type: new TypeMetadata.int(),
+        type: intType,
         parameterKind: ParameterKind.named,
         isInitializer: false,
         defaultValue: null
     );
     final expected = new ParameterMetadata(
         'bar',
-        type: new TypeMetadata.bool(),
+        type: boolType,
         parameterKind: ParameterKind.positional,
         isInitializer: true,
         defaultValue: true

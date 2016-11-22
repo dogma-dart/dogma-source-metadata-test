@@ -26,7 +26,7 @@ void main() {
     expectNoMatch(matcher, new UriReferencedMetadata());
   });
   test('isType', () {
-    final matcher = isType(new TypeMetadata('Foo'));
+    final matcher = isType(interfaceType('Foo'));
 
     expectMatch(matcher, new ClassMetadata('Foo'));
     expectNoMatch(matcher, new ClassMetadata('Bar'));
@@ -34,7 +34,7 @@ void main() {
   test('isDynamicType', () {
     final matcher = isDynamicType;
 
-    expectMatch(matcher, new ParameterMetadata('p', type: new TypeMetadata.dynamic()));
-    expectNoMatch(matcher, new ParameterMetadata('p', type: new TypeMetadata.int()));
+    expectMatch(matcher, new ParameterMetadata('p', type: dynamicType));
+    expectNoMatch(matcher, new ParameterMetadata('p', type: intType));
   });
 }
