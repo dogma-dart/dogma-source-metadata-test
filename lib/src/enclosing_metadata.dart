@@ -14,19 +14,13 @@ import 'package:test/test.dart';
 // Library contents
 //---------------------------------------------------------------------
 
-/// A matcher for [ClassMetadata] instances.
-const Matcher isClassMetadata = const isInstanceOf<ClassMetadata>();
-
-final Matcher hasNoMethods =
+/// A matcher which verifies that [metadata] encloses the value.
+///
+/// This matcher uses `identical` to ensure that the enclosing metadata is the
+/// exact instance specified in [metadata].
+Matcher enclosedBy(EnclosingMetadata metadata) =>
     predicate((value) {
-      if (value is! ClassMetadata) return true;
+      if (value is! EnclosedMetadata) return false;
 
-      return (value as ClassMetadata).methods.isEmpty;
-    });
-
-Matcher hasMethods(int count) =>
-    predicate((value) {
-      if (value is! ClassMetadata) return false;
-
-      return (value as ClassMetadata).methods.length == count;
+      return identical((value as EnclosedMetadata).enclosingMetadata, metadata);
     });

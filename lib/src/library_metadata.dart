@@ -16,3 +16,45 @@ import 'package:test/test.dart';
 
 /// A matcher for [LibraryMetadata] instances.
 const Matcher isLibraryMetadata = const isInstanceOf<LibraryMetadata>();
+
+final Matcher hasNoClasses =
+    predicate((value) {
+      if (value is! LibraryMetadata) return true;
+
+      return (value as LibraryMetadata).classes.isEmpty;
+    });
+
+Matcher hasClasses(int count) =>
+    predicate((value) {
+      if (value is! LibraryMetadata) return false;
+
+      return (value as LibraryMetadata).classes.length == count;
+    });
+
+final Matcher hasNoFunctions =
+    predicate((value) {
+      if (value is! LibraryMetadata) return true;
+
+      return (value as LibraryMetadata).functions.isEmpty;
+    });
+
+Matcher hasFunctions(int count) =>
+    predicate((value) {
+      if (value is! LibraryMetadata) return false;
+
+      return (value as LibraryMetadata).functions.length == count;
+    });
+
+final Matcher hasNoTypedefs =
+    predicate((value) {
+      if (value is! LibraryMetadata) return true;
+
+      return (value as LibraryMetadata).typedefs.isEmpty;
+    });
+
+Matcher hasTypedefs(int count) =>
+    predicate((value) {
+      if (value is! LibraryMetadata) return false;
+
+      return (value as LibraryMetadata).typedefs == count;
+    });

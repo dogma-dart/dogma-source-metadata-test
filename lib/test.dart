@@ -167,6 +167,7 @@ export 'src/commented.dart';
 export 'src/constant_metadata.dart';
 export 'src/constructor_metadata.dart';
 export 'src/deprecated_annotation.dart';
+export 'src/enclosing_metadata.dart';
 export 'src/field_metadata.dart';
 export 'src/function_metadata.dart';
 export 'src/library_metadata.dart';

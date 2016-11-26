@@ -40,7 +40,7 @@ Matcher prefixedBy(String prefix) =>
       return (value as UriReferencedMetadata).prefix == prefix;
     }, 'Metadata is prefixed by $prefix');
 
-/// A matcher that checks if all names in the referenced library are exposed.
+/// A matcher that checks if the reference.
 final Matcher showsAllNames = predicate((value) {
   if (value is! UriReferencedMetadata) return false;
 

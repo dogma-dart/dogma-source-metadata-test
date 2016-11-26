@@ -81,3 +81,25 @@ final Matcher isNotFinal = predicate((value) {
   // A final field does not have a setter
   return (value as FieldMetadata).setter;
 }, 'field is not final');
+
+Matcher hasFields(int count) =>
+    predicate((value) {
+      if (value is LibraryMetadata) {
+        return (value as LibraryMetadata).fields.length == count;
+      } else if (value is ClassMetadata) {
+        return (value as ClassMetadata).fields.length == count;
+      } else {
+        return false;
+      }
+    });
+
+final Matcher hasNoFields =
+    predicate((value) {
+      if (value is LibraryMetadata) {
+        return (value as LibraryMetadata).fields.isEmpty;
+      } else if (value is ClassMetadata) {
+        return (value as ClassMetadata).fields.isEmpty;
+      } else {
+        return true;
+      }
+    });
