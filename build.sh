@@ -2,8 +2,7 @@
 set -ex
 
 # Clone Dogma libraries
-git clone https://github.com/dogma-dart/dogma-union-type.git ../dogma-union-type
-git clone https://github.com/dogma-dart/dogma-source-analyzer.git ../dogma-source-analyzer
+git clone https://github.com/dogma-dart/dogma-source-metadata.git ../dogma-source-metadata
 
 # Get version
 dart --version

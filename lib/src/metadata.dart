@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------
 
 import 'package:test/test.dart';
-import 'package:dogma_source_analyzer/metadata.dart';
+import 'package:dogma_source_metadata/metadata.dart';
 
 import 'constructor_metadata_matcher.dart';
 import 'class_metadata_matcher.dart';

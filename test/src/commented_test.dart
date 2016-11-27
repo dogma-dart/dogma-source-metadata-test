@@ -7,9 +7,8 @@
 // Imports
 //---------------------------------------------------------------------
 
-import 'package:dogma_source_analyzer/metadata.dart';
+import 'package:dogma_source_metadata/metadata.dart';
 import 'package:dogma_source_metadata_test/test.dart';
-import 'package:meta/meta.dart';
 import 'package:test/test.dart';
 
 import 'matcher.dart';
