@@ -44,11 +44,11 @@ Matcher hasAnnotations(int length) =>
 ///
 /// A [description] can added if necessary which will give information on what
 /// is being checked for.
-Matcher hasAnnotation/*<T>*/(AnnotationEqual/*<T>*/ equal,
-                             dynamic/*=T*/ expected,
-                            [String description]) =>
+Matcher hasAnnotation<T>(AnnotationEqual<T> equal,
+                         T expected,
+                        [String description]) =>
     predicate(
-        (value) => _hasAnnotation/*<T>*/(value, expected, equal),
+        (value) => _hasAnnotation<T>(value, expected, equal),
         description ?? 'has annotation'
     );
 
@@ -57,11 +57,11 @@ Matcher hasAnnotation/*<T>*/(AnnotationEqual/*<T>*/ equal,
 ///
 /// A [description] can added if necessary which will give information on what
 /// is being checked for.
-Matcher missingAnnotation/*<T>*/(AnnotationEqual/*<T>*/ equal,
-                                 dynamic/*=T*/ expected,
-                                [String description]) =>
+Matcher missingAnnotation<T>(AnnotationEqual<T> equal,
+                             T expected,
+                            [String description]) =>
     predicate(
-        (value) => !_hasAnnotation/*<T>*/(value, expected, equal),
+        (value) => !_hasAnnotation<T>(value, expected, equal),
         description ?? 'missing annotation'
     );
 
@@ -74,11 +74,11 @@ Matcher missingAnnotation/*<T>*/(AnnotationEqual/*<T>*/ equal,
 ///
 /// A [description] can added if necessary which will give information on what
 /// is being checked for.
-Matcher annotatedWith/*<T>*/(dynamic/*=T*/ expected, [String description]) =>
-    hasAnnotation/*<T>*/(
+Matcher annotatedWith<T>(T expected, [String description]) =>
+    hasAnnotation<T>(
         _isEqual,
         expected,
-        description ?? 'has annotation $expected'
+        description ?? 'has annotation $expected',
     );
 
 /// Determine if the [expected] annotation is not present on metadata.
@@ -90,22 +90,22 @@ Matcher annotatedWith/*<T>*/(dynamic/*=T*/ expected, [String description]) =>
 ///
 /// A [description] can added if necessary which will give information on what
 /// is being checked for.
-Matcher notAnnotatedWith/*<T>*/(dynamic/*=T*/ expected, [String description]) =>
-    missingAnnotation/*<T>*/(
+Matcher notAnnotatedWith<T>(T expected, [String description]) =>
+    missingAnnotation<T>(
         _isEqual,
         expected,
         description ?? 'missing annotation $expected'
     );
 
 /// Simple equality test of [actual] and [expected].
-bool _isEqual/*<T>*/(dynamic/*=T*/ actual, dynamic/*=T*/ expected) =>
+bool _isEqual<T>(T actual, T expected) =>
     actual == expected;
 
 /// Determines if the [annotated] metadata contain the [expected] value which
 /// is verified through the [equal] function.
-bool _hasAnnotation/*<T>*/(dynamic annotated,
-                           dynamic expected,
-                           AnnotationEqual/*<T>*/ equal) {
+bool _hasAnnotation<T>(dynamic annotated,
+                       T expected,
+                       AnnotationEqual<T> equal) {
   if (annotated is! Annotated) return false;
 
   bool check(dynamic value) => equal(value, expected);

@@ -119,7 +119,7 @@ class MetadataMatcher<T extends Metadata> extends Matcher {
 
   /// Create matchers for the given list of [expected] values.
   static Iterable<Matcher> _matcherList(List expected) =>
-      expected.map/*<Matcher>*/((value) => _matcher(value));
+      expected.map<Matcher>((value) => _matcher(value));
 
   /// Creates a matcher for the [expected] value.
   ///
