@@ -56,5 +56,5 @@ Matcher hasTypedefs(int count) =>
     predicate((value) {
       if (value is! LibraryMetadata) return false;
 
-      return (value as LibraryMetadata).typedefs == count;
+      return (value as LibraryMetadata).typedefs.length == count;
     });
