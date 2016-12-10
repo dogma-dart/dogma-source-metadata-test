@@ -76,7 +76,7 @@ Matcher missingAnnotation<T>(AnnotationEqual<T> equal,
 /// is being checked for.
 Matcher annotatedWith<T>(T expected, [String description]) =>
     hasAnnotation<T>(
-        _isEqual,
+        _isEqual<T>(),
         expected,
         description ?? 'has annotation $expected',
     );
@@ -92,14 +92,15 @@ Matcher annotatedWith<T>(T expected, [String description]) =>
 /// is being checked for.
 Matcher notAnnotatedWith<T>(T expected, [String description]) =>
     missingAnnotation<T>(
-        _isEqual,
+        _isEqual<T>(),
         expected,
         description ?? 'missing annotation $expected'
     );
 
 /// Simple equality test of [actual] and [expected].
-bool _isEqual<T>(T actual, T expected) =>
-    actual == expected;
+// \TODO This is a workaround to use generic methods and keep type safety
+AnnotationEqual<T> _isEqual<T>() =>
+    (dynamic actual, T expected) => expected == actual;
 
 /// Determines if the [annotated] metadata contain the [expected] value which
 /// is verified through the [equal] function.
