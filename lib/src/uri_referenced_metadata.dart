@@ -32,6 +32,18 @@ final Matcher isPrefixed = predicate((value) {
   return (value as UriReferencedMetadata).prefix.isNotEmpty;
 }, 'Metadata is prefixed');
 
+final Matcher notDeferred = predicate((value) {
+  if (value is! UriReferencedMetadata) return false;
+
+  return !(value as UriReferencedMetadata).deferred;
+});
+
+final Matcher isDeferred = predicate((value) {
+  if (value is! UriReferencedMetadata) return false;
+
+  return (value as UriReferencedMetadata).deferred;
+});
+
 /// Matches the [prefix] on [UriReferencedMetadata].
 Matcher prefixedBy(String prefix) =>
     predicate((value) {
@@ -60,7 +72,6 @@ final Matcher showsNames = predicate((value) {
 
   return (value as UriReferencedMetadata).shownNames.isNotEmpty;
 }, 'Metadata shows names');
-
 
 /// A matcher that checks if any names are explicitly hidden.
 final Matcher hidesNames = predicate((value) {
@@ -92,3 +103,17 @@ Matcher hidesName(String name) =>
 
       return (value as UriReferencedMetadata).hiddenNames.contains(name);
     }, 'Metadata hides metadata named $name');
+
+final Matcher notConfigurationImport =
+    predicate((value) {
+      if (value is! UriReferencedMetadata) return false;
+
+      return (value as UriReferencedMetadata).when.isEmpty;
+    });
+
+final Matcher isConfigurationImport =
+    predicate((value) {
+      if (value is! UriReferencedMetadata) return false;
+
+      return (value as UriReferencedMetadata).when.isNotEmpty;
+    });
