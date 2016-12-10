@@ -34,4 +34,4 @@ Matcher commentedWith(String comment) =>
       if (value is! Commented) return false;
 
       return (value as Commented).comments == comment;
-    }, 'metadata is commented with $comment');
+    }, 'metadata is commented with "$comment"');
