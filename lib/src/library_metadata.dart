@@ -58,3 +58,26 @@ Matcher hasTypedefs(int count) =>
 
       return (value as LibraryMetadata).typedefs.length == count;
     });
+
+Matcher imports(Uri uri) =>
+    predicate((value) {
+      if (value is! LibraryMetadata) return false;
+
+      return _references(value.imports, uri);
+    });
+
+Matcher exports(Uri uri) =>
+    predicate((value) {
+      if (value is! LibraryMetadata) return false;
+
+      return _references(value.exports, uri);
+    });
+
+bool _references(Iterable<UriReferencedMetadata> references, Uri uri) =>
+    references.firstWhere((value) {
+      final library = value.library;
+
+      if (library == null) return false;
+
+      return value.library == uri;
+    }, orElse: () => null) == null;
